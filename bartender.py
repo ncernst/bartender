@@ -19,13 +19,24 @@ ingredients = {
 
 drink = {}
 
-for question in questions:
-    print(questions[question])
-    response = input(">>>")
-    
-    if response.upper() == "Y" or response.upper() == "YES":
-        drink[question] = True
-    else:
-        drink[question] = False
+def preference_questions():
+    for question in questions:
+        print(questions[question])
+        response = input(">>>")
         
-print(drink)
+        if response.upper() == "Y" or response.upper() == "YES":
+            drink[question] = True
+        else:
+            drink[question] = False
+
+def make_drink():
+    print("Yarr, let's fix ye up something")
+    
+    for preference in drink:
+        if drink[preference] == True:
+            print("A " + str(random.choice(ingredients[preference])))
+    
+
+if __name__ == '__main__':
+    preference_questions()
+    make_drink()
