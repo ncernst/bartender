@@ -1,9 +1,5 @@
+# random.choice(ingredients[question])
 import random
-
-
-
-
-
 
 questions = {
     "strong": "Do ye like yer drinks strong?",
@@ -21,5 +17,15 @@ ingredients = {
     "fruity" : ["slice of orange", "dash of cassis", "cherry on top"],
 }
 
+drink = {}
+
 for question in questions:
     print(questions[question])
+    response = input(">>>")
+    
+    if response.upper() == "Y" or response.upper() == "YES":
+        drink[question] = True
+    else:
+        drink[question] = False
+        
+print(drink)
