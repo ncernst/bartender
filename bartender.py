@@ -40,8 +40,8 @@ def make_drink():
     for preference in drink:
         if drink[preference] == True:
             print("* Adds a " + str(random.choice(ingredients[preference])) + " *")
-    
-    print("Drink up!")
+     
+    print("Here's yer " + str(random.choice(drink_name["adjective"])) + str(random.choice(drink_name["noun"])) +". Drink up!")
             
 def welcome():
     print("Fancy a drink?")
