@@ -24,6 +24,8 @@ drink_name = {
 
 drink = {}
 
+customers = {}
+
 def preference_questions():
     for question in questions:
         print(questions[question])
@@ -34,36 +36,74 @@ def preference_questions():
         else:
             drink[question] = False
 
-def make_drink():
+def make_drink(name):
     print("Yarr, let's fix ye up something...")
     
     for preference in drink:
         if drink[preference] == True:
             print("* Adds a " + str(random.choice(ingredients[preference])) + " *")
-     
-    print("Here's yer " + str(random.choice(drink_name["adjective"])) + str(random.choice(drink_name["noun"])) +". Drink up!")
+    
+    your_drink = str(random.choice(drink_name["adjective"])) + str(random.choice(drink_name["noun"]))
+    customers[name] = your_drink
+    print("Here's yer " + your_drink +". Drink up!")
+
+
+def tab(name):
+    if name == None:
+        print("Lemme open ye up a tab. What's yer name, matey?")
+        name = input(">>> ")
+        return name
+    elif name in customers:
+        print("Another of the same?")
+        another_round = input(">>> ")
+        
+        if another_round.upper() == "Y" or another_round.upper() == "YES":
+            print("Very well, another " + customers[name] +". Drink up!")
+        
+        else:
+            preference_questions()
+            make_drink(name)   
+    else:
+        print("It's yer lucky day, I can't find yer tab. We'll start a new one for ye.")
+        preference_questions()
+        make_drink(name) 
             
 def welcome():
     print("Fancy a drink?")
     thirsty_response = input(">>> ")
     
+
+    
     if thirsty_response.upper() != "Y" and thirsty_response.upper() != "YES":
         print("Then ye best be shoving off.")
         exit()
     else:
+        name = tab(None)
         preference_questions()
-        make_drink()
+        make_drink(name)
 
 
 def another():
-    print("Would ye like another?")
+    print("Thirsty?")
     another_response = input(">>> ")
     
     if another_response.upper() == "Y" or another_response.upper() == "YES":
-        preference_questions()
-        make_drink()
+        print("Do ye have a tab?")
+        tab_response = input(">>> ")
+        
+        if tab_response.upper() == "Y" or tab_response.upper() == "YES":
+            print("What's the name?")
+            name = input(">>> ")
+            
+            tab(name)
+
+            
+        else:
+            name = tab(None)
+            preference_questions()
+            make_drink(name)
     else:
-        print("Best be paying yer tab then matie.")
+        print("Best be paying yer tab then matey.")
         exit()
 
 
