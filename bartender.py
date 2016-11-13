@@ -1,4 +1,4 @@
-# random.choice(ingredients[question])
+
 import random
 
 questions = {
@@ -27,6 +27,7 @@ drink = {}
 customers = {}
 
 def preference_questions():
+    """Asks the users what type of drink they like"""
     for question in questions:
         print(questions[question])
         response = input(">>>")
@@ -37,6 +38,7 @@ def preference_questions():
             drink[question] = False
 
 def make_drink(name):
+    """Makes the user's drink based on prefernces from preference_question, saves drink name and user name in customers"""
     print("Yarr, let's fix ye up something...")
     
     for preference in drink:
@@ -49,6 +51,7 @@ def make_drink(name):
 
 
 def tab(name):
+    """Creates tab and checks to see if user wants last drink they had again""""
     if name == None:
         print("Lemme open ye up a tab. What's yer name, matey?")
         name = input(">>> ")
@@ -69,6 +72,7 @@ def tab(name):
         make_drink(name) 
             
 def welcome():
+    """Welcomes user and gets user's name"""
     print("Fancy a drink?")
     thirsty_response = input(">>> ")
     
@@ -84,6 +88,7 @@ def welcome():
 
 
 def another():
+    """Checks if user wants a drink and if they already have a tab"""
     print("Thirsty?")
     another_response = input(">>> ")
     
